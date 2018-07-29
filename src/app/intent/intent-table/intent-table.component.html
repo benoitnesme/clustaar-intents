@@ -1,0 +1,7 @@
+<div>Nb intents : {{list.total}}</div>
+<ul>
+  <li *ngFor="let item of list.intents">
+    <span>name : {{item.name}}</span>
+    <span> --- sayings : {{item.getDescription()}}</span>
+  </li>
+</ul>
