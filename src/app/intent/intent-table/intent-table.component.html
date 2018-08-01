@@ -1,4 +1,16 @@
-<div>Nb intents : {{list.total}}</div>
+<div fxLayout="row">
+  <div fxFlex="66%">
+    <input type="text" placeholder="Search intent" />
+  </div>
+
+  <div fxFlex>
+    <div>Nb intents : {{list.total}}</div>
+  </div>
+  <div fxFlex>
+    <button>Add intent</button>
+  </div>
+</div>
+
 <ul>
   <li *ngFor="let item of list.intents">
     <span>name : {{item.name}}</span>

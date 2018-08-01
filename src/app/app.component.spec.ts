@@ -1,11 +1,16 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { MaterialModule } from './material.module';
+import { IntentTableComponent } from './intent/intent-table/intent-table.component';
+import { IntentService } from './intent/intent/intent.service';
+import { IntentServiceFake } from './intent/intent/intent.service.fake';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent, IntentTableComponent],
+      imports: [MaterialModule],
+      providers: [{ provide: IntentService, useClass: IntentServiceFake }],
     }).compileComponents();
   }));
   it('should create the app', async(() => {
@@ -13,15 +18,9 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have as title 'clustaar-intents'`, async(() => {
+  it(`should have as title 'Simple Intents application'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('clustaar-intents');
-  }));
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to clustaar-intents!');
+    expect(app.title).toEqual('Simple Intents application');
   }));
 });
