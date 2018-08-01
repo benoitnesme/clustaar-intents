@@ -1,7 +1,21 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
+<div>
+  <mat-toolbar color="primary">
     {{title}}
-  </h1>
+  </mat-toolbar>
+  <div fxLayout="row">
+    <div fxFlex></div>
+    <div fxFlex="800px">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <div class="mat-title">Intents</div>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-intent-table></app-intent-table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div fxFlex></div>
+  </div>
 </div>
-<app-intent-table></app-intent-table>
