@@ -1,9 +1,9 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
-import { IntentTableComponent } from './intent/intent-table/intent-table.component';
-import { IntentService } from './intent/intent/intent.service';
-import { IntentServiceFake } from './intent/intent/intent.service.fake';
+import { IntentTableComponent } from './intentsmanager/intent-table/intent-table.component';
+import { IntentService } from './intentsmanager/intent/intent.service';
+import { IntentServiceFake } from './intentsmanager/intent/intent.service.fake';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
