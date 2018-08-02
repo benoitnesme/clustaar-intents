@@ -40,22 +40,25 @@ export class IntentServiceFake implements IIntentService {
   }
 
   save(i: IIntent): Observable<boolean> {
-    const key = i.name;
-    let exists: boolean;
-    exists = false;
-    this.intentList.forEach(e => {
-      if (e.name === key) {
-        exists = true;
-      }
-    });
-    if (exists) {
-      alert(key + ' already added');
-    } else {
-      if (i instanceof SimpleIntent) {
-        const simpleIntent = i as SimpleIntent;
-        this.intentList.push(new SimpleIntent(key, [simpleIntent.sayings]));
+    if (i instanceof SimpleIntent) {
+      const simpleIntent = i as SimpleIntent;
+      const key = simpleIntent.sayings[0];
+      let exists: boolean;
+      exists = false;
+      this.intentList.forEach(e => {
+        const si = e as SimpleIntent;
+        // == volontaire, ce n'est pas le même type
+        if (si.sayings[0] == key) {
+          exists = true;
+        }
+      });
+      if (exists) {
+        alert(key + ' already added');
+      } else {
+        this.intentList.push(new SimpleIntent(simpleIntent.name, [simpleIntent.sayings]));
       }
     }
+
     return of(true);
   }
 }
