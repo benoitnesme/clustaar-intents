@@ -1,5 +1,5 @@
 export interface IIntent {
-  name: string;
+  answer: string;
   getDescription(): string;
 }
 
@@ -8,14 +8,14 @@ export interface ISimpleIntent extends IIntent {
 }
 
 export class Intent implements IIntent {
-  constructor(public name = '') {}
+  constructor(public answer = '') {}
   public getDescription(): string {
-    return this.name;
+    return this.answer;
   }
 }
 
 export class SimpleIntent implements ISimpleIntent {
-  constructor(public name = '', public sayings = []) {}
+  constructor(public answer = '', public sayings = []) {}
 
   getDescription(): string {
     return this.sayings.join(', ');

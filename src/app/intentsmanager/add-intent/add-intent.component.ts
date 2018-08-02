@@ -35,7 +35,7 @@ export class AddIntentComponent implements OnInit {
           type: ['simple', Validators.required],
         }),
         this.formBuilder.group({
-          name: ['', Validators.required],
+          answer: ['', Validators.required],
           sayings: ['', Validators.required],
         }),
       ]),
@@ -80,7 +80,7 @@ export class AddIntentComponent implements OnInit {
     const type = form0.get('type').value;
     if (type === 'simple') {
       const simpleIntent = new SimpleIntent();
-      simpleIntent.name = form1.get('name').value;
+      simpleIntent.answer = form1.get('answer').value;
       simpleIntent.sayings = form1.get('sayings').value.split('\n');
       return simpleIntent;
     } else {

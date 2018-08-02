@@ -16,14 +16,9 @@
   </div>
 </div>
 
-<!-- <mat-table [dataSource]="dataSource">
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-  </ng-container>
-</mat-table> -->
 <ul>
   <li *ngFor="let item of list.intents">
-    <span>name : {{item.name}}</span>
-    <span> --- sayings : {{item.getDescription()}}</span>
+    <span>{{item.answer}}</span>
+    <span> -------------- {{item.getDescription()}}</span>
   </li>
 </ul>

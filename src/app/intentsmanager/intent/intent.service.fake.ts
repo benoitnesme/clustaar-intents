@@ -55,7 +55,7 @@ export class IntentServiceFake implements IIntentService {
       if (exists) {
         alert(key + ' already added');
       } else {
-        this.intentList.push(new SimpleIntent(simpleIntent.name, [simpleIntent.sayings]));
+        this.intentList.push(new SimpleIntent(simpleIntent.answer, [simpleIntent.sayings]));
       }
     }
 
