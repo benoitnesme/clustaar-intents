@@ -16,9 +16,9 @@
   </div>
 </div>
 
-<ul>
-  <li *ngFor="let item of list.intents">
-    <span>{{item.answer}}</span>
-    <span> -------------- {{item.getDescription()}}</span>
-  </li>
-</ul>
+<table>
+  <tr *ngFor="let item of list.intents">
+    <td>{{item.answer}}</td>
+    <td> {{item.getDescription()}}</td>
+  </tr>
+</table>
