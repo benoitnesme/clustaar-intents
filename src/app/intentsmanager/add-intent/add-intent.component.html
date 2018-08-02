@@ -1,5 +1,7 @@
 <mat-toolbar>
   <h5>Add intent</h5>
+  <span class="fill-remaining-space"></span>
+  <button (click)='this.dialogRef.close()'>X</button>
 </mat-toolbar>
 <form [formGroup]="intentForm">
   <mat-horizontal-stepper #stepper linear formArrayName="formArray">
