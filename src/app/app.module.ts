@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { IntentsManagerModule } from './intentsmanager/intentsmanager.module';
@@ -16,6 +17,7 @@ import { IntentsManagerModule } from './intentsmanager/intentsmanager.module';
     MaterialModule,
     FlexLayoutModule,
     IntentsManagerModule,
+    AppRoutingModule,
   ],
   bootstrap: [AppComponent],
 })

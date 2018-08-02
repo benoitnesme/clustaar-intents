@@ -4,6 +4,7 @@ import { flatMap, map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { IntentService, IIntents } from '../intent/intent.service';
 // import { MatTableDataSource } from '@angular/material';
+import { IntentsManagerRootingModule } from '../intentsmanager-routing.module';
 
 @Component({
   selector: 'app-intent-table',
@@ -18,5 +19,9 @@ export class IntentTableComponent implements OnInit {
   ngOnInit() {
     const stream = this.intentService.getIntents(0, 100, null);
     stream.subscribe(data => (this.list = data));
+  }
+
+  public addIntent() {
+    alert('.addintent');
   }
 }
