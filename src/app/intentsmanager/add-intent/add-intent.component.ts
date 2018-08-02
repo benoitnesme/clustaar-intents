@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
-import { Intent } from '../intent/intent';
+import { IIntent, SimpleIntent } from '../intent/intent';
 import { IntentService } from '../intent/intent.service';
 
 @Component({
@@ -9,15 +16,32 @@ import { IntentService } from '../intent/intent.service';
   styleUrls: ['./add-intent.component.css'],
 })
 export class AddIntentComponent implements OnInit {
-  public currentIntent: Intent;
-  constructor(private router: Router, private intentService: IntentService) {}
+  public intentError: string;
+  intentForm: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private intentService: IntentService
+  ) {}
 
   ngOnInit() {
-    this.currentIntent = new Intent();
+    this.intentForm = this.formBuilder.group({
+      formArray: this.formBuilder.array([
+        this.formBuilder.group({
+          type: ['simple', Validators.required],
+        }),
+        this.formBuilder.group({
+          name: ['', Validators.required],
+          sayings: ['', Validators.required],
+        }),
+      ]),
+    });
   }
 
   public save() {
-    this.intentService.save(this.currentIntent).subscribe(
+    const currentIntent = this.getIntentFromForm();
+    this.intentService.save(currentIntent).subscribe(
       res => {
         this.router.navigate(['/intents/']);
       },
@@ -25,5 +49,24 @@ export class AddIntentComponent implements OnInit {
         alert(err);
       }
     );
+  }
+
+  get formArray(): FormArray | null {
+    return this.intentForm.get('formArray') as FormArray;
+  }
+
+  private getIntentFromForm(): IIntent {
+    const forms = this.intentForm.get('formArray') as FormArray;
+    const form0 = forms.at(0);
+    const form1 = forms.at(1);
+    const type = form0.get('type').value;
+    if (type === 'simple') {
+      const simpleIntent = new SimpleIntent();
+      simpleIntent.name = form1.get('name').value;
+      simpleIntent.sayings = form1.get('sayings').value;
+      return simpleIntent;
+    } else {
+      console.log('unexpected intent type ' + type);
+    }
   }
 }

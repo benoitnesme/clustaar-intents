@@ -40,7 +40,7 @@ export class IntentServiceFake implements IIntentService {
   }
 
   save(i: IIntent): Observable<boolean> {
-    const key = 'intent 6';
+    const key = i.name;
     let exists: boolean;
     exists = false;
     this.intentList.forEach(e => {
@@ -51,7 +51,10 @@ export class IntentServiceFake implements IIntentService {
     if (exists) {
       alert(key + ' already added');
     } else {
-      this.intentList.push(new SimpleIntent('intent 6', ['sayings 6.1', 'sayings 6.2']));
+      if (i instanceof SimpleIntent) {
+        const simpleIntent = i as SimpleIntent;
+        this.intentList.push(new SimpleIntent(key, [simpleIntent.sayings]));
+      }
     }
     return of(true);
   }

@@ -6,6 +6,8 @@ import { IntentTableComponent } from './intentsmanager/intent-table/intent-table
 
 const routes: Routes = [
   { path: '', redirectTo: '/intents', pathMatch: 'full' },
+  // FIXME : les routes sont hardcodées ici alors qu'elles devraient être
+  // gérées par intentsmanager-routing.module
   { path: 'intents', component: IntentTableComponent },
   { path: 'intents/add', component: AddIntentComponent },
 ];

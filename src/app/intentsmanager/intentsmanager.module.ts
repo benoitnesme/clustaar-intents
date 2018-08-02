@@ -9,9 +9,16 @@ import { IntentTableComponent } from './intent-table/intent-table.component';
 import { ViewIntentComponent } from './view-intent/view-intent.component';
 import { AddIntentComponent } from './add-intent/add-intent.component';
 import { IntentsManagerRootingModule } from './intentsmanager-routing.module';
+import { IntentsManagerMaterialModule } from './intentsmanager.material.module';
 
 @NgModule({
-  imports: [CommonModule, MaterialModule, FlexLayoutModule, IntentsManagerRootingModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    FlexLayoutModule,
+    IntentsManagerRootingModule,
+    IntentsManagerMaterialModule,
+  ],
   exports: [IntentsManagerComponent, AddIntentComponent],
   declarations: [
     IntentsManagerComponent,

@@ -1,3 +1,90 @@
 <button (click)="save()">
   Save
 </button>
+
+<mat-toolbar>
+  <h5>Add intent</h5>
+</mat-toolbar>
+<form [formGroup]="intentForm">
+  <mat-horizontal-stepper #stepper linear formArrayName="formArray">
+    <mat-step formGroupName="0" [stepControl]="intentForm.get([0])">
+      <ng-template matStepLabel>Choose intent type</ng-template>
+      <mat-radio-group class="radio-group" formControlName="type">
+        <mat-radio-button class="radio-button" value='simple' checked>
+          Simple intent
+        </mat-radio-button>
+        <mat-radio-button class="radio-button" value='advanced' disabled>
+          Advanced intent
+        </mat-radio-button>
+      </mat-radio-group>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step formGroupName="1" [stepControl]="intentForm.get([1])">
+      <ng-template matStepLabel>Create simple intent</ng-template>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Name" formControlName="name" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="sayings" formControlName="sayings" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="save()" [disabled]="this.intentForm.invalid">Save</button>
+        <button mat-button (click)="save()" [disabled]="this.intentForm.invalid">Save and create new intent</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</form>
+
+<!-- <mat-horizontal-stepper #stepper="matHorizontalStepper" linear>
+  <mat-step [stepControl]="intentForm">
+    <form [formGroup]="intentForm">
+      <ng-template matStepLabel>Intent selection</ng-template>
+      <div class="stepContent">
+        <div fxLayout="row" fxLayout.lt-sm="column" [formGroup]="intentForm.get('name')" fxLayoutGap="10px">
+          <mat-form-field fxFlex="100%">
+            <input matInput placeholder="name" aria-label="name" formControlName="name">
+            <mat-error *ngIf="intentForm.get('name').hasError('required')">
+              name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="10px">
+          <mat-form-field fxFlex="100%">
+            <input matInput placeholder="sayings" aria-label="sayings" formControlName="sayings">
+            <mat-error *ngIf="intentForm.get('sayings').hasError('required')">
+              sayings is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row" class="margin-top">
+        <div class="flex-spacer"></div>
+        <div *ngIf="intentError" class="mat-caption error">{{intentError}}</div>
+        <button mat-raised-button matStepperNext color="accent">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="intentForm">
+    <form [formGroup]="intentForm" (ngSubmit)="save()">
+      <ng-template matStepLabel>Review</ng-template>
+      <div class="stepContent">
+        Review and update yourintent : TODO afficher ici l'intent qui a été saisie
+         <app-view-intent [intent]="this.intentForm.value"></app-view-intent>
+</div>
+<div fxLayout="row" class="margin-top">
+  <button mat-button matStepperPrevious>Back</button>
+  <div class="flex-spacer"></div>
+  <div *ngIf="intentError" class="mat-caption error">{{intentError}}</div>
+  <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
+  <button mat-raised-button matStepperNext color="primary" type="submit" [disabled]="this.intentForm.invalid">Update</button>
+</div>
+</form>
+</mat-step>
+</mat-horizontal-stepper> -->
