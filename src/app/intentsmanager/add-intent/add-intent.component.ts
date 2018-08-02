@@ -77,7 +77,7 @@ export class AddIntentComponent implements OnInit {
     if (type === 'simple') {
       const simpleIntent = new SimpleIntent();
       simpleIntent.name = form1.get('name').value;
-      simpleIntent.sayings = form1.get('sayings').value;
+      simpleIntent.sayings = form1.get('sayings').value.split('\n');
       return simpleIntent;
     } else {
       console.log('unexpected intent type ' + type);
