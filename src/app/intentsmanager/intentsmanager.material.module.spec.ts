@@ -1,13 +1,13 @@
-import { IntentsManager.MaterialModule } from './intents.manager.material.module';
+import { IntentsManagerMaterialModule } from './intentsmanager.material.module';
 
-describe('Intent.MaterialModule', () => {
-  let intentMaterialModule: IntentsManager.MaterialModule;
+describe('IntentsManagerMaterialModule', () => {
+  let intentsManagerMaterialModule: IntentsManagerMaterialModule;
 
   beforeEach(() => {
-    intentMaterialModule = new IntentsManager.MaterialModule();
+    intentsManagerMaterialModule = new IntentsManagerMaterialModule();
   });
 
   it('should create an instance', () => {
-    expect(intentMaterialModule).toBeTruthy();
+    expect(intentsManagerMaterialModule).toBeTruthy();
   });
 });

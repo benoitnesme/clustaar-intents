@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IntentTableComponent } from './intent-table.component';
 import { MaterialModule } from '../../material.module';
-import { IntentService } from '../intentsmanager/intent.service';
-import { IntentServiceFake } from '../intentsmanager/intent.service.fake';
+import { IntentService } from '../intent/intent.service';
+import { IntentServiceFake } from '../intent/intent.service.fake';
 
 describe('IntentTableComponent', () => {
   let component: IntentTableComponent;

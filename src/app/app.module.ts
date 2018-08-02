@@ -6,30 +6,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
-import { IntentTableComponent } from './intentsmanager/intent-table/intent-table.component';
-import { ViewIntentComponent } from './intentsmanager/view-intent/view-intent.component';
-import { IntentService } from './intentsmanager/intent/intent.service';
-import { IntentServiceFake } from './intentsmanager/intent/intent.service.fake';
-import { Intents } from './intentsmanager/intents.manager.material.module';
-import { IntentsModule } from './intentsmanager/intentsmanager.module';
-import { IntentsManagerComponent } from './intentsmanager/intents.managercomponent';
+import { IntentsManagerModule } from './intentsmanager/intentsmanager.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    IntentTableComponent,
-    ViewIntentComponent,
-    IntentsManagerComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    IntentsManager.MaterialModule,
     IntentsManagerModule,
   ],
-  providers: [{ provide: IntentService, useClass: IntentServiceFake }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

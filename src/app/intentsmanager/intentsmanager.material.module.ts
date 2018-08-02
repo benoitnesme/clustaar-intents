@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+// import { MatTableModule } from '@angular/material';
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: []
+  // imports: [MatTableModule],
+  // exports: [MatTableModule],
+  declarations: [],
 })
-export class IntentsManager.MaterialModule { }
+export class IntentsManagerMaterialModule {}

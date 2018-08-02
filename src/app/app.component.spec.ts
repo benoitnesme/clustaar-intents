@@ -1,16 +1,12 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
-import { IntentTableComponent } from './intentsmanager/intent-table/intent-table.component';
-import { IntentService } from './intentsmanager/intent/intent.service';
-import { IntentServiceFake } from './intentsmanager/intent/intent.service.fake';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, IntentTableComponent],
+      declarations: [AppComponent],
       imports: [MaterialModule],
-      providers: [{ provide: IntentService, useClass: IntentServiceFake }],
     }).compileComponents();
   }));
   it('should create the app', async(() => {

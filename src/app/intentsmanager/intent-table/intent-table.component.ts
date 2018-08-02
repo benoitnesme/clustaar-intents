@@ -2,8 +2,9 @@ import { Observable } from 'rxjs';
 import { flatMap, map } from 'rxjs/operators';
 
 import { Component, OnInit } from '@angular/core';
-import { IntentService, IIntents } from '../intentsmanager/intent.service';
-import { MatTableDataSource } from '@angular/material';
+import { IntentService, IIntents } from '../intent/intent.service';
+// import { MatTableDataSource } from '@angular/material';
+
 @Component({
   selector: 'app-intent-table',
   templateUrl: './intent-table.component.html',
@@ -11,6 +12,7 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class IntentTableComponent implements OnInit {
   public list: IIntents;
+  // dataSource = new MatTableDataSource();
   constructor(private intentService: IntentService) {}
 
   ngOnInit() {
