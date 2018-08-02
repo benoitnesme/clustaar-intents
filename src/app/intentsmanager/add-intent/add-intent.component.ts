@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormArray,
@@ -16,6 +16,7 @@ import { IntentService } from '../intent/intent.service';
   styleUrls: ['./add-intent.component.css'],
 })
 export class AddIntentComponent implements OnInit {
+  @ViewChild('stepper') stepper;
   public intentError: string;
   intentForm: FormGroup;
 
@@ -39,11 +40,24 @@ export class AddIntentComponent implements OnInit {
     });
   }
 
-  public save() {
+  public saveThenReset() {
+    this.save(true);
+  }
+
+  public saveThenBackToList() {
+    this.save(false);
+  }
+
+  private save(saveThenReset: boolean) {
     const currentIntent = this.getIntentFromForm();
     this.intentService.save(currentIntent).subscribe(
       res => {
-        this.router.navigate(['/intents/']);
+        if (saveThenReset) {
+          this.stepper.reset();
+          this.router.navigate(['/intents/add/']);
+        } else {
+          this.router.navigate(['/intents/']);
+        }
       },
       err => {
         alert(err);

@@ -35,8 +35,8 @@
       </div>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="save()" [disabled]="this.intentForm.invalid">Save</button>
-        <button mat-button (click)="save()" [disabled]="this.intentForm.invalid">Save and create new intent</button>
+        <button mat-button (click)="saveThenBackToList()" [disabled]="this.intentForm.invalid">Save</button>
+        <button mat-button (click)="saveThenReset()" [disabled]="this.intentForm.invalid">Save and create new intent</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>
