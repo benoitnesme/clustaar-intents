@@ -1,4 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
+
 import {
   AbstractControl,
   FormArray,
@@ -9,7 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { IIntent, SimpleIntent } from '../intent/intent';
 import { IntentService } from '../intent/intent.service';
-
+import { MatDialogRef } from '@angular/material';
 @Component({
   selector: 'app-add-intent',
   templateUrl: './add-intent.component.html',
@@ -23,7 +24,8 @@ export class AddIntentComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private intentService: IntentService
+    private intentService: IntentService,
+    public dialogRef: MatDialogRef<AddIntentComponent>
   ) {}
 
   ngOnInit() {
@@ -49,13 +51,15 @@ export class AddIntentComponent implements OnInit {
   }
 
   private save(saveThenReset: boolean) {
+    const forms = this.intentForm.get('formArray') as FormArray;
     const currentIntent = this.getIntentFromForm();
     this.intentService.save(currentIntent).subscribe(
       res => {
         if (saveThenReset) {
           this.stepper.reset();
-          this.router.navigate(['/intents/add/']);
+          forms.reset();
         } else {
+          this.dialogRef.close();
           this.router.navigate(['/intents/']);
         }
       },

@@ -8,6 +8,7 @@ import {
 } from '@angular/material';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   imports: [
     MatTableModule,
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatStepperModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
   exports: [
     MatTableModule,
@@ -28,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatStepperModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
   declarations: [],
 })

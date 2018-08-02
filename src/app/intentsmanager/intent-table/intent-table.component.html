@@ -4,12 +4,15 @@
   </div>
 
   <div fxFlex>
-    <div>Nb intents : {{list.total}}</div>
+    <div>Nb intents : {{list.intents.length}}</div>
   </div>
   <div fxFlex>
-    <button routerLink="/intents/add">
+    <button (click)='addIntentDialog()'>
       Add Intent
     </button>
+    <!-- <button routerLink="/intents/add">
+      Add Intent
+    </button> -->
   </div>
 </div>
 
